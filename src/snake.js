@@ -32,18 +32,22 @@ export class Snake {
     }
 
     moveLeft() {
-        this.snakeXSpeed = -this.snakeSpeed; //why *1 and not just -10?
+        if (this.snakeXSpeed == this.snakeSpeed) return;
+        this.snakeXSpeed = -this.snakeSpeed;
         this.snakeYSpeed = 0;
     }
     moveUp() {
+        if (this.snakeYSpeed == this.snakeSpeed) return;
         this.snakeXSpeed = 0;
         this.snakeYSpeed = -this.snakeSpeed;
     }
     moveRight() {
+        if (this.snakeXSpeed == -this.snakeSpeed) return;
         this.snakeXSpeed = this.snakeSpeed;
         this.snakeYSpeed = 0;
     }
     moveDown() {
+        if (this.snakeYSpeed == -this.snakeSpeed) return;
         this.snakeXSpeed = 0;
         this.snakeYSpeed = this.snakeSpeed;
     }
