@@ -1,4 +1,11 @@
 // Snake player class
+
+/*
+Notes:
+I think the wall collision is too quick or too soon.
+Snake head moves a little too fast.
+*/
+
 export class Snake {
     constructor(canvasWidth, canvasHeight){
         this.canvasHeight = canvasHeight;
@@ -6,11 +13,11 @@ export class Snake {
         this.snakeWidth = 20;
         this.snakeHeight = 20;
 
-        this.snakeSpeed = 7;
+        this.snakeSpeed = 5;
         this.snakeXSpeed = 0;
         this.snakeYSpeed = 0;
 
-        this.snakePosition = {  // Start snake head in the middle
+        this.snakePosition = {  // Start snake head in middle
             x: canvasWidth / 2 - this.snakeWidth / 2, 
             y: canvasHeight / 2 - this.snakeHeight / 2
         }
@@ -25,28 +32,24 @@ export class Snake {
     }
 
     moveLeft() {
-        this.snakeXSpeed = -this.snakeSpeed * 1; //why *1 and not just -10?
+        this.snakeXSpeed = -this.snakeSpeed; //why *1 and not just -10?
         this.snakeYSpeed = 0;
-        console.log("Left");
     }
     moveUp() {
         this.snakeXSpeed = 0;
-        this.snakeYSpeed = -this.snakeSpeed * 1;
-        console.log("Up");
+        this.snakeYSpeed = -this.snakeSpeed;
     }
     moveRight() {
-        this.snakeXSpeed = this.snakeSpeed * 1;
+        this.snakeXSpeed = this.snakeSpeed;
         this.snakeYSpeed = 0;
-        console.log("Right");
     }
     moveDown() {
         this.snakeXSpeed = 0;
-        this.snakeYSpeed = this.snakeSpeed * 1;
-        console.log("Down");
+        this.snakeYSpeed = this.snakeSpeed;
     }
 
     draw(context) {
-        context.fillStyle = "#000000";
+        context.fillStyle = "#32CD32";
         context.fillRect(this.snakePosition.x, this.snakePosition.y, this.snakeWidth, this.snakeHeight)        
     }
 
@@ -63,7 +66,7 @@ export class Snake {
             this.resetSnakePosition();
         }
         if (this.snakePosition.y < 0) { this.resetSnakePosition(); }
-        if (this.snakePosition.y + this.snakeHeight > this.canvasHeight) {
+        if ((this.snakePosition.y + this.snakeHeight) > this.canvasHeight) {
             this.resetSnakePosition();
         }
     }
