@@ -1,8 +1,17 @@
-let htmlCanvas = document.getElementById("gameCanvas");
-let context = htmlCanvas.getContext("2d"); // rendering context
-let scale = 10;
-let rows = htmlCanvas.height / scale;
-let columns = htmlCanvas.width / scale;
+import {Snake} from "./snake.js";
 
-//context.fillRect(20, 20, 10, 10);
-var snake;
+let canvas = document.getElementById("gameCanvas");
+let context = canvas.getContext("2d"); // rendering context
+
+const CANVAS_WIDTH = 400;
+const CANVAS_HEIGHT = 400;
+
+context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+
+// let scale = 10;
+
+let snake = new Snake(CANVAS_WIDTH, CANVAS_HEIGHT);
+snake.draw(context);
+
+
+
